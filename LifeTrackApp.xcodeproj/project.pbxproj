@@ -7,13 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		964A9F911DBBB89600B6BA83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964A9F8F1DBBB89600B6BA83 /* Main.storyboard */; };
+		9666A1B81E226B1C00F07D56 /* scoreCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9666A1B71E226B1C00F07D56 /* scoreCard.swift */; };
+		966FBF001D6CF741004A8506 /* ColorFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966FBEFF1D6CF741004A8506 /* ColorFinder.swift */; };
+		966FBF021D6CF9C4004A8506 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966FBF011D6CF9C4004A8506 /* UserData.swift */; };
+		96796D391E1F0AD400C3CC59 /* createHabits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96796D381E1F0AD400C3CC59 /* createHabits.swift */; };
+		9698B91A1DFDB90A0083C7D9 /* save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9698B9191DFDB90A0083C7D9 /* save.swift */; };
+		969F1D871DBAD199003F2AFB /* LogClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969F1D861DBAD199003F2AFB /* LogClasses.swift */; };
+		96E547391E1C56D200C0EB81 /* load.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E547381E1C56D200C0EB81 /* load.swift */; };
 		96EFEC3F1D63BB090025E1B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EFEC3E1D63BB090025E1B2 /* AppDelegate.swift */; };
 		96EFEC411D63BB090025E1B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EFEC401D63BB090025E1B2 /* ViewController.swift */; };
-		96EFEC441D63BB090025E1B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96EFEC421D63BB090025E1B2 /* Main.storyboard */; };
 		96EFEC461D63BB090025E1B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96EFEC451D63BB090025E1B2 /* Assets.xcassets */; };
 		96EFEC491D63BB090025E1B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96EFEC471D63BB090025E1B2 /* LaunchScreen.storyboard */; };
 		96EFEC541D63BB090025E1B2 /* LifeTrackAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EFEC531D63BB090025E1B2 /* LifeTrackAppTests.swift */; };
 		96EFEC5F1D63BB090025E1B2 /* LifeTrackAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EFEC5E1D63BB090025E1B2 /* LifeTrackAppUITests.swift */; };
+		96EFEC6D1D63BB2D0025E1B2 /* HabitCreater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EFEC6C1D63BB2D0025E1B2 /* HabitCreater.swift */; };
+		96FCE5F31DC29F0F0057F81D /* LogScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FCE5F21DC29F0F0057F81D /* LogScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +43,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		964A9F901DBBB89600B6BA83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9666A1B71E226B1C00F07D56 /* scoreCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scoreCard.swift; sourceTree = "<group>"; };
+		966FBEFF1D6CF741004A8506 /* ColorFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorFinder.swift; path = ../ColorFinder.swift; sourceTree = "<group>"; };
+		966FBF011D6CF9C4004A8506 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		96796D381E1F0AD400C3CC59 /* createHabits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createHabits.swift; sourceTree = "<group>"; };
+		9698B9191DFDB90A0083C7D9 /* save.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = save.swift; sourceTree = "<group>"; };
+		969F1D861DBAD199003F2AFB /* LogClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogClasses.swift; sourceTree = "<group>"; };
+		96E547381E1C56D200C0EB81 /* load.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = load.swift; sourceTree = "<group>"; };
 		96EFEC3B1D63BB090025E1B2 /* LifeTrackApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifeTrackApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96EFEC3E1D63BB090025E1B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96EFEC401D63BB090025E1B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		96EFEC431D63BB090025E1B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96EFEC451D63BB090025E1B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96EFEC481D63BB090025E1B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96EFEC4A1D63BB090025E1B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +63,8 @@
 		96EFEC5A1D63BB090025E1B2 /* LifeTrackAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifeTrackAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		96EFEC5E1D63BB090025E1B2 /* LifeTrackAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeTrackAppUITests.swift; sourceTree = "<group>"; };
 		96EFEC601D63BB090025E1B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96EFEC6C1D63BB2D0025E1B2 /* HabitCreater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HabitCreater.swift; path = ../HabitCreater.swift; sourceTree = "<group>"; };
+		96FCE5F21DC29F0F0057F81D /* LogScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +92,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		966C5EF71DBBAF5400EC1579 /* To delete */ = {
+			isa = PBXGroup;
+			children = (
+				96EFEC6C1D63BB2D0025E1B2 /* HabitCreater.swift */,
+			);
+			name = "To delete";
+			sourceTree = "<group>";
+		};
+		9698B91B1DFE0C040083C7D9 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				96EFEC401D63BB090025E1B2 /* ViewController.swift */,
+				96FCE5F21DC29F0F0057F81D /* LogScreenViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		9698B91C1DFE0C1D0083C7D9 /* Log Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Log Models";
+			sourceTree = "<group>";
+		};
 		96EFEC321D63BB080025E1B2 = {
 			isa = PBXGroup;
 			children = (
@@ -97,9 +139,18 @@
 		96EFEC3D1D63BB090025E1B2 /* LifeTrackApp */ = {
 			isa = PBXGroup;
 			children = (
+				9698B91C1DFE0C1D0083C7D9 /* Log Models */,
+				9698B91B1DFE0C040083C7D9 /* View Controllers */,
+				969F1D861DBAD199003F2AFB /* LogClasses.swift */,
+				966FBF011D6CF9C4004A8506 /* UserData.swift */,
+				966FBEFF1D6CF741004A8506 /* ColorFinder.swift */,
 				96EFEC3E1D63BB090025E1B2 /* AppDelegate.swift */,
-				96EFEC401D63BB090025E1B2 /* ViewController.swift */,
-				96EFEC421D63BB090025E1B2 /* Main.storyboard */,
+				96E547381E1C56D200C0EB81 /* load.swift */,
+				9698B9191DFDB90A0083C7D9 /* save.swift */,
+				96796D381E1F0AD400C3CC59 /* createHabits.swift */,
+				9666A1B71E226B1C00F07D56 /* scoreCard.swift */,
+				966C5EF71DBBAF5400EC1579 /* To delete */,
+				964A9F8F1DBBB89600B6BA83 /* Main.storyboard */,
 				96EFEC451D63BB090025E1B2 /* Assets.xcassets */,
 				96EFEC471D63BB090025E1B2 /* LaunchScreen.storyboard */,
 				96EFEC4A1D63BB090025E1B2 /* Info.plist */,
@@ -193,6 +244,7 @@
 				TargetAttributes = {
 					96EFEC3A1D63BB080025E1B2 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 9623A9THPN;
 					};
 					96EFEC4E1D63BB090025E1B2 = {
 						CreatedOnToolsVersion = 7.3;
@@ -229,9 +281,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				964A9F911DBBB89600B6BA83 /* Main.storyboard in Resources */,
 				96EFEC491D63BB090025E1B2 /* LaunchScreen.storyboard in Resources */,
 				96EFEC461D63BB090025E1B2 /* Assets.xcassets in Resources */,
-				96EFEC441D63BB090025E1B2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +309,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				96EFEC411D63BB090025E1B2 /* ViewController.swift in Sources */,
+				96FCE5F31DC29F0F0057F81D /* LogScreenViewController.swift in Sources */,
+				96796D391E1F0AD400C3CC59 /* createHabits.swift in Sources */,
+				96E547391E1C56D200C0EB81 /* load.swift in Sources */,
+				9698B91A1DFDB90A0083C7D9 /* save.swift in Sources */,
+				9666A1B81E226B1C00F07D56 /* scoreCard.swift in Sources */,
 				96EFEC3F1D63BB090025E1B2 /* AppDelegate.swift in Sources */,
+				96EFEC6D1D63BB2D0025E1B2 /* HabitCreater.swift in Sources */,
+				966FBF021D6CF9C4004A8506 /* UserData.swift in Sources */,
+				966FBF001D6CF741004A8506 /* ColorFinder.swift in Sources */,
+				969F1D871DBAD199003F2AFB /* LogClasses.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,10 +354,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		96EFEC421D63BB090025E1B2 /* Main.storyboard */ = {
+		964A9F8F1DBBB89600B6BA83 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				96EFEC431D63BB090025E1B2 /* Base */,
+				964A9F901DBBB89600B6BA83 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -399,10 +460,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: steve@indiespring.com (LRCWBMBCC2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LifeTrackApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SteveSanders.LifeTrackApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "170a0298-dc52-4fa2-bc33-87302a43486d";
 			};
 			name = Debug;
 		};
@@ -410,10 +474,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: steve@indiespring.com (LRCWBMBCC2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LifeTrackApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SteveSanders.LifeTrackApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "170a0298-dc52-4fa2-bc33-87302a43486d";
 			};
 			name = Release;
 		};
@@ -482,6 +549,7 @@
 				96EFEC651D63BB090025E1B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		96EFEC661D63BB090025E1B2 /* Build configuration list for PBXNativeTarget "LifeTrackAppTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +558,7 @@
 				96EFEC681D63BB090025E1B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		96EFEC691D63BB090025E1B2 /* Build configuration list for PBXNativeTarget "LifeTrackAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +567,7 @@
 				96EFEC6B1D63BB090025E1B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
