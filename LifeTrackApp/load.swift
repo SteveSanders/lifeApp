@@ -10,14 +10,14 @@ import Foundation
 
 func load () {
     print("Loading")
-    if (NSKeyedUnarchiver.unarchiveObjectWithFile(habitsFilePath) as? [habit] == nil ) {
+    if (NSKeyedUnarchiver.unarchiveObject(withFile: habitsFilePath) as? [habit] == nil ) {
         print("Creating tasks for first time")
         usersHabits = createHabits()
-        saveHabits(usersHabits!)
+        //saveHabits(usersHabits!)
     } else {
         print("loading tasks")
-        var habits = NSKeyedUnarchiver.unarchiveObjectWithFile(habitsFilePath)as? [habit]
+        let habits = NSKeyedUnarchiver.unarchiveObject(withFile: habitsFilePath)as? [habit]
         print(habits)
-        usersHabits = (NSKeyedUnarchiver.unarchiveObjectWithFile(habitsFilePath)as? [habit])!
+        usersHabits = (NSKeyedUnarchiver.unarchiveObject(withFile: habitsFilePath)as? [habit])!
     }
 }

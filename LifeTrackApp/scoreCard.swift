@@ -9,7 +9,7 @@
 import UIKit
 
 class scoreCard: UILabel {
-    func setScore (score: Int) {
+    func setScore (_ score: Int) {
         self.text = score.description
         let backColour: (color: UIColor,text: String) = updateCounterColour(score)
         self.backgroundColor = backColour.color

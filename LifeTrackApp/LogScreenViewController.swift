@@ -52,7 +52,7 @@ class LogScreenViewController: UIViewController {
     var currentHabit: habit? = nil
     
     func setHabits () {
-        finalReviewScreen.hidden = true
+        finalReviewScreen.isHidden = true
         //settings butons
         buttons = [buttonOne, buttonTwo, buttonThree, buttonFour, buttonFive]
         print(masterLog?.chapters.count)
@@ -79,13 +79,13 @@ class LogScreenViewController: UIViewController {
     func loadNext () {
         
         //currentHabit = usersHabits![currentHabitNumber]
-        if chapterScreen.hidden {
+        if chapterScreen.isHidden {
             currentHabitNumber += 1
             print("Habit number increased - it is now ", currentHabitNumber, " out of ", habitsCount)
             if currentHabitNumber >= habitsCount {
                 print("Loading chapter review here - final chapter")
                 loadChapterReview()
-                nextChapterButton.setTitle("Finish current log", forState: .Normal)
+                nextChapterButton.setTitle("Finish current log", for: UIControlState())
                 return
             } else {
                 print("loading a new habit")
@@ -141,66 +141,66 @@ class LogScreenViewController: UIViewController {
     
     func loadChapterReview() {
         print(currentChapter)
-        var chapter = usersChapters![currentChapter]
+        let chapter = usersChapters![currentChapter]
         chapter.addScore()
         chapterScore.text=chapter.currentScores["Default"]?.description
         //reviewScreen.hidden=false
-        chapterScreen.hidden=false
-        habitScreen.hidden=true
+        chapterScreen.isHidden=false
+        habitScreen.isHidden=true
     }
     
     func loadHabit() {
         var currentButton = 0
         for button in buttons! {
             if currentButton < currentHabit!.answers.count {
-                button.hidden = false
-                button.setTitle(currentHabit!.answers[currentButton].wordage, forState: .Normal)
+                button.isHidden = false
+                button.setTitle(currentHabit!.answers[currentButton].wordage, for: UIControlState())
             } else {
-                button.hidden = true
+                button.isHidden = true
             }
             currentButton += 1
         }
         //buttonOne.setTitle(currentHabit!.answers[0].wordage, forState: .Normal)
-        habitScreen.hidden = false
+        habitScreen.isHidden = false
         
         //reviewScreen.hidden = true
-        chapterScreen.hidden=true
+        chapterScreen.isHidden=true
         question.text=currentHabit?.question
         taskTitle.text=currentHabit?.title
     }
     
     func loadReview() {
 
-        finalReviewScreen.hidden=false
+        finalReviewScreen.isHidden=false
         masterLog!.addScore()
         saveHabits(usersHabits!)
         reviewScoreCard.setScore((masterLog?.currentScores["Default"])!)
         lifeScore = masterLog?.currentScores["Default"]
     }
     
-    func logAnswer (answer: Int) {
+    func logAnswer (_ answer: Int) {
         var score = currentHabit?.answers[answer].score
         currentHabit?.addScore(score!)
         loadNext()
     }
     
-    @IBAction func buttonOnePressed(sender: AnyObject) {
+    @IBAction func buttonOnePressed(_ sender: AnyObject) {
         logAnswer(0)
     }
-    @IBAction func buttonTwoPressed(sender: AnyObject) {
+    @IBAction func buttonTwoPressed(_ sender: AnyObject) {
         logAnswer(1)
     }
-    @IBAction func buttonThreePressed(sender: AnyObject) {
+    @IBAction func buttonThreePressed(_ sender: AnyObject) {
         logAnswer(2)
     }
     
-    @IBAction func buttonFourPressed(sender: AnyObject) {
+    @IBAction func buttonFourPressed(_ sender: AnyObject) {
         logAnswer(3)
     }
-    @IBAction func buttonFivePressed(sender: AnyObject) {
+    @IBAction func buttonFivePressed(_ sender: AnyObject) {
         logAnswer(4)
     }
-    @IBAction func lastChapterPressed(sender: AnyObject) {
+    @IBAction func lastChapterPressed(_ sender: AnyObject) {
         if(currentHabitNumber == habitsCount) {
             //currentHabitNumber = 0
             loadReview()

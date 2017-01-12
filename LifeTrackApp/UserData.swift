@@ -36,4 +36,4 @@ var lifeScore: Int? = nil {
     }
 }
 
-var lastLog: NSDate = NSDate()
+var lastLog: Date = Date()

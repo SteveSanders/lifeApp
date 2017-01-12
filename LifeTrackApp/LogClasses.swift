@@ -7,6 +7,30 @@
 //
 
 import Foundation
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
 
 
 
@@ -29,17 +53,17 @@ class answer: NSObject, NSCoding {
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
-        let score = aDecoder.decodeObjectForKey("score") as! Int
-        let wordage = aDecoder.decodeObjectForKey("wordage") as! String
+        let score = aDecoder.decodeObject(forKey: "score") as! Int
+        let wordage = aDecoder.decodeObject(forKey: "wordage") as! String
         self.init(
             scoreForAnswer: score,
             andWording: wordage
         )
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(score, forKey: PropertyKey.ScoreKey)
-        aCoder.encodeObject(wordage, forKey: PropertyKey.WordageKey)
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(score, forKey: PropertyKey.ScoreKey)
+        aCoder.encode(wordage, forKey: PropertyKey.WordageKey)
     }
 }
 
@@ -77,7 +101,7 @@ class log: NSObject, NSCoding {
         }
     }
     
-    func findAverage (lowValues: [Int], midValues: [Int], highValues: [Int]) -> Int {
+    func findAverage (_ lowValues: [Int], midValues: [Int], highValues: [Int]) -> Int {
 
         //var added: Int = 0
         var totalScore: Int = 0
@@ -112,7 +136,7 @@ class log: NSObject, NSCoding {
         }
     }
     
-    func taskStart (currentPerformance: Int) {
+    func taskStart (_ currentPerformance: Int) {
         self.currentScores["Default"] = currentPerformance
         self.currentScores["Week"] = currentPerformance
         self.currentScores["Fortnight"] = currentPerformance
@@ -145,12 +169,12 @@ class log: NSObject, NSCoding {
     }
     
     required convenience init(coder aDecoder: NSCoder) {
-        let importance = aDecoder.decodeObjectForKey("importance") as! Int
-        let streak = aDecoder.decodeObjectForKey("streak") as! Int
-        let currentSuccess = aDecoder.decodeObjectForKey("currentSuccess") as! Bool
-        let daysLogged = aDecoder.decodeObjectForKey("daysLogged") as! Int
-        let currentScores = aDecoder.decodeObjectForKey("currentScores") as! [String: Int]
-        let active = aDecoder.decodeObjectForKey("active") as! Bool
+        let importance = aDecoder.decodeObject(forKey: "importance") as! Int
+        let streak = aDecoder.decodeObject(forKey: "streak") as! Int
+        let currentSuccess = aDecoder.decodeObject(forKey: "currentSuccess") as! Bool
+        let daysLogged = aDecoder.decodeObject(forKey: "daysLogged") as! Int
+        let currentScores = aDecoder.decodeObject(forKey: "currentScores") as! [String: Int]
+        let active = aDecoder.decodeObject(forKey: "active") as! Bool
         self.init(
             importance: importance,
             streak: streak,
@@ -161,13 +185,13 @@ class log: NSObject, NSCoding {
         self.currentScores = currentScores
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(importance, forKey: PropertyKey.ImportanceKey)
-        aCoder.encodeObject(streak, forKey: PropertyKey.StreakKey)
-        aCoder.encodeObject(currentSuccess, forKey: PropertyKey.CurrentSuccessKey)
-        aCoder.encodeObject(daysLogged, forKey: PropertyKey.DaysLoggedKey)
-        aCoder.encodeObject(currentScores, forKey: PropertyKey.CurrentScoresKey)
-        aCoder.encodeObject(active, forKey: PropertyKey.ActiveKey)
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(importance, forKey: PropertyKey.ImportanceKey)
+        aCoder.encode(streak, forKey: PropertyKey.StreakKey)
+        aCoder.encode(currentSuccess, forKey: PropertyKey.CurrentSuccessKey)
+        aCoder.encode(daysLogged, forKey: PropertyKey.DaysLoggedKey)
+        aCoder.encode(currentScores, forKey: PropertyKey.CurrentScoresKey)
+        aCoder.encode(active, forKey: PropertyKey.ActiveKey)
         //aCoder.encodeObject(importance, forKey: PropertyKey.ImportanceKey)
     }
 };
@@ -222,7 +246,7 @@ class habit: log {
     }
     
     //handles smart and non-smart average requests when the setAverages function is called
-    func requestAverage (days : Int , smart: Bool) -> Int {
+    func requestAverage (_ days : Int , smart: Bool) -> Int {
         if smart {
             let arraySize: Int = days / 3
             var low: [Int] = []
@@ -264,16 +288,16 @@ class habit: log {
     }
     
     //adds to history and deltes old entries
-    func logScore (log: Int) {
+    func logScore (_ log: Int) {
 
-        self.history.insert(log, atIndex: 0)
+        self.history.insert(log, at: 0)
         while (self.history.count > 31) {
             self.history.removeLast()
         }
     }
     
     //function to be calledwhenever user adds a new score
-    func addScore (value: Int) {
+    func addScore (_ value: Int) {
 
         self.logScore(value)
 
@@ -283,7 +307,7 @@ class habit: log {
         self.daysLogged += 1
     }
     
-    func setUp (currentPerformance: Int) {
+    func setUp (_ currentPerformance: Int) {
         //fill out history
         while self.history.count < 31 {
             self.history.append(currentPerformance)
@@ -335,22 +359,22 @@ class habit: log {
     required convenience init(coder aDecoder: NSCoder) {
         
         //let importance = decoder.decodeObjectForKey("importance") as! Int
-        let id = aDecoder.decodeObjectForKey("id") as! Int
-        let title = aDecoder.decodeObjectForKey("title") as! String
-        let question = aDecoder.decodeObjectForKey("question") as! String
-        let answers = aDecoder.decodeObjectForKey("answers") as! [ answer ]
-        let top = aDecoder.decodeObjectForKey("top") as! Int
-        let chapter = aDecoder.decodeObjectForKey("chapter") as! Int
-        let smart = aDecoder.decodeObjectForKey("smart") as! Bool
-        let range = aDecoder.decodeObjectForKey("range") as! Int
-        let average = aDecoder.decodeObjectForKey("average") as! Int
-        let currentSuccess = aDecoder.decodeObjectForKey("daysLogged") as! Bool
-        let streak = aDecoder.decodeObjectForKey("streak") as! Int
-        let history = aDecoder.decodeObjectForKey("history") as! [ Int ]
-        let reasons = aDecoder.decodeObjectForKey("reasons") as! [ String ]
-        let daysLogged = aDecoder.decodeObjectForKey("daysLogged") as! Int
-        let importance = aDecoder.decodeObjectForKey("importance") as! Int
-        let active = aDecoder.decodeObjectForKey("active") as! Bool
+        let id = aDecoder.decodeObject(forKey: "id") as! Int
+        let title = aDecoder.decodeObject(forKey: "title") as! String
+        let question = aDecoder.decodeObject(forKey: "question") as! String
+        let answers = aDecoder.decodeObject(forKey: "answers") as! [ answer ]
+        let top = aDecoder.decodeObject(forKey: "top") as! Int
+        let chapter = aDecoder.decodeObject(forKey: "chapter") as! Int
+        let smart = aDecoder.decodeObject(forKey: "smart") as! Bool
+        let range = aDecoder.decodeObject(forKey: "range") as! Int
+        let average = aDecoder.decodeObject(forKey: "average") as! Int
+        let currentSuccess = aDecoder.decodeObject(forKey: "daysLogged") as! Bool
+        let streak = aDecoder.decodeObject(forKey: "streak") as! Int
+        let history = aDecoder.decodeObject(forKey: "history") as! [ Int ]
+        let reasons = aDecoder.decodeObject(forKey: "reasons") as! [ String ]
+        let daysLogged = aDecoder.decodeObject(forKey: "daysLogged") as! Int
+        let importance = aDecoder.decodeObject(forKey: "importance") as! Int
+        let active = aDecoder.decodeObject(forKey: "active") as! Bool
         
         self.init(id: id, basicTitle: title, question: question, answers: answers, top: top, average: average, range: range,  smart: smart, currentSuccess: currentSuccess, streak: streak, daysLogged: daysLogged, chapter: chapter, importance: importance, history: history, reasons: reasons, active: active)
         
@@ -384,29 +408,29 @@ class habit: log {
 //            currentScores: currentScores,
 //            active: active
 //        )
-                //fatalError("init(coder:) has not been implemented")
+            fatalError("init(coder:) has not been implemented")
     }
     
-    override func encodeWithCoder(aCoder: NSCoder) {
+    override func encode(with aCoder: NSCoder) {
         
-        super.encodeWithCoder(aCoder)
+        super.encode(with: aCoder)
         
-        aCoder.encodeObject(id, forKey: PropertyKey.IdKey)
-        aCoder.encodeObject(title, forKey: PropertyKey.TitleKey)
-        aCoder.encodeObject(question, forKey: PropertyKey.QuestionKey)
-        aCoder.encodeObject(answers, forKey: PropertyKey.AnswersKey)
-        aCoder.encodeObject(top, forKey: PropertyKey.TopKey)
-        aCoder.encodeObject(chapter, forKey: PropertyKey.ChapterKey)
-        aCoder.encodeObject(smart, forKey: PropertyKey.SmartKey)
-        aCoder.encodeObject(range, forKey: PropertyKey.RangeKey)
-        aCoder.encodeObject(average, forKey: PropertyKey.AverageKey)
-        aCoder.encodeObject(history, forKey: PropertyKey.HistoryKey)
-        aCoder.encodeObject(reasons, forKey: PropertyKey.ReasonsKey)
-        aCoder.encodeObject(daysLogged, forKey: PropertyKey.DaysLogged)
-        aCoder.encodeObject(importance, forKey: PropertyKey.Importance)
-        aCoder.encodeObject(streak, forKey: PropertyKey.Streak)
-        aCoder.encodeObject(reasons, forKey: PropertyKey.Reasons)
-        aCoder.encodeObject(active, forKey: PropertyKey.Active)
+        aCoder.encode(id, forKey: PropertyKey.IdKey)
+        aCoder.encode(title, forKey: PropertyKey.TitleKey)
+        aCoder.encode(question, forKey: PropertyKey.QuestionKey)
+        aCoder.encode(answers, forKey: PropertyKey.AnswersKey)
+        aCoder.encode(top, forKey: PropertyKey.TopKey)
+        aCoder.encode(chapter, forKey: PropertyKey.ChapterKey)
+        aCoder.encode(smart, forKey: PropertyKey.SmartKey)
+        aCoder.encode(range, forKey: PropertyKey.RangeKey)
+        aCoder.encode(average, forKey: PropertyKey.AverageKey)
+        aCoder.encode(history, forKey: PropertyKey.HistoryKey)
+        aCoder.encode(reasons, forKey: PropertyKey.ReasonsKey)
+        aCoder.encode(daysLogged, forKey: PropertyKey.DaysLogged)
+        aCoder.encode(importance, forKey: PropertyKey.Importance)
+        aCoder.encode(streak, forKey: PropertyKey.Streak)
+        aCoder.encode(reasons, forKey: PropertyKey.Reasons)
+        aCoder.encode(active, forKey: PropertyKey.Active)
         
         //aCoder.encodeObject(streak, forKey: PropertyKey.StreakKey)
     }
@@ -632,10 +656,10 @@ class owner: log {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func encodeWithCoder(aCoder: NSCoder) {
-        super.encodeWithCoder(aCoder)
+    override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
 
-        aCoder.encodeObject(children, forKey: PropertyKey.ChildrenKey)
+        aCoder.encode(children, forKey: PropertyKey.ChildrenKey)
     }
 }
 
@@ -686,28 +710,28 @@ class chapter: owner {
     }
     
     required convenience init (coder decoder: NSCoder) {
-        let id = decoder.decodeObjectForKey("id") as! Int
-        let title = decoder.decodeObjectForKey("title") as! String
-        let importance = decoder.decodeObjectForKey("importance") as! Int
-        let streak = decoder.decodeObjectForKey("streak") as! Int
-        let currentSuccess = decoder.decodeObjectForKey("currentSuccess") as! Bool
-        let daysLogged = decoder.decodeObjectForKey("daysLogged") as! Int
-        let active = decoder.decodeObjectForKey("active") as! Bool
+        let id = decoder.decodeObject(forKey: "id") as! Int
+        let title = decoder.decodeObject(forKey: "title") as! String
+        let importance = decoder.decodeObject(forKey: "importance") as! Int
+        let streak = decoder.decodeObject(forKey: "streak") as! Int
+        let currentSuccess = decoder.decodeObject(forKey: "currentSuccess") as! Bool
+        let daysLogged = decoder.decodeObject(forKey: "daysLogged") as! Int
+        let active = decoder.decodeObject(forKey: "active") as! Bool
         
         
         self.init(id: id, basicTitle: title, importance: importance, streak: streak, currentSuccess: currentSuccess, daysLogged: daysLogged, active: active)
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func encodeWithCoder(aCoder: NSCoder) {
-        super.encodeWithCoder(aCoder)
-        aCoder.encodeObject(id, forKey: PropertyKey.IdKey)
-        aCoder.encodeObject(title, forKey: PropertyKey.TitleKey)
-        aCoder.encodeObject(importance, forKey: PropertyKey.Importance)
-        aCoder.encodeObject(streak, forKey: PropertyKey.Streak)
-        aCoder.encodeObject(currentSuccess, forKey: PropertyKey.CurrentSuccess)
-        aCoder.encodeObject(daysLogged, forKey: PropertyKey.DaysLogged)
-        aCoder.encodeObject(active, forKey: PropertyKey.Active)
+    override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+        aCoder.encode(id, forKey: PropertyKey.IdKey)
+        aCoder.encode(title, forKey: PropertyKey.TitleKey)
+        aCoder.encode(importance, forKey: PropertyKey.Importance)
+        aCoder.encode(streak, forKey: PropertyKey.Streak)
+        aCoder.encode(currentSuccess, forKey: PropertyKey.CurrentSuccess)
+        aCoder.encode(daysLogged, forKey: PropertyKey.DaysLogged)
+        aCoder.encode(active, forKey: PropertyKey.Active)
     }
     
     func setAverages () {
@@ -738,7 +762,7 @@ class chapter: owner {
 class master: owner {
     var chapters: [chapter]
     
-    var lastLogDate: NSDate?
+    var lastLogDate: Date?
     
     //gets the average for this chater, taking into accont importances. Expects "Week" "Fortnight" "SmartMonth" etc. to be passed.
     
@@ -776,20 +800,20 @@ class master: owner {
     }
     
     required convenience init (coder decoder: NSCoder) {
-        let streak = decoder.decodeObjectForKey("streak") as! Int
-        let currentSuccess = decoder.decodeObjectForKey("currentSuccess") as! Bool
-        let daysLogged = decoder.decodeObjectForKey("daysLogged") as! Int
-        let lastLogDate = decoder.decodeObjectForKey("lastLogDate") as! NSDate
+        let streak = decoder.decodeObject(forKey: "streak") as! Int
+        let currentSuccess = decoder.decodeObject(forKey: "currentSuccess") as! Bool
+        let daysLogged = decoder.decodeObject(forKey: "daysLogged") as! Int
+        let lastLogDate = decoder.decodeObject(forKey: "lastLogDate") as! Date
         
         self.init(streak: streak, currentSuccess: currentSuccess, daysLogged: daysLogged)
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func encodeWithCoder(aCoder: NSCoder) {
-        super.encodeWithCoder(aCoder)
-        aCoder.encodeObject(streak, forKey: PropertyKey.Streak)
-        aCoder.encodeObject(currentSuccess, forKey: PropertyKey.CurrentSuccess)
-        aCoder.encodeObject(daysLogged, forKey: PropertyKey.DaysLogged)
+    override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+        aCoder.encode(streak, forKey: PropertyKey.Streak)
+        aCoder.encode(currentSuccess, forKey: PropertyKey.CurrentSuccess)
+        aCoder.encode(daysLogged, forKey: PropertyKey.DaysLogged)
     }
     
     func setAverages () {

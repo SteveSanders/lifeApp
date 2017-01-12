@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-func updateCounterColour (count: Int) -> (color: UIColor,text: String) {
+func updateCounterColour (_ count: Int) -> (color: UIColor,text: String) {
     if count == 150 {
         //Platnium
         return (UIColor(red: 239/255.0, green: 240/255.0, blue: 242/255.0, alpha: 1.0),"Platinum")
@@ -25,15 +25,15 @@ func updateCounterColour (count: Int) -> (color: UIColor,text: String) {
         return (UIColor(red: 180/255.0, green: 76/255.0, blue: 29/255.0, alpha: 1.0),"Bronze")
     } else if count > 80 {
         //Green
-        return (UIColor.greenColor(),"")
+        return (UIColor.green,"")
     } else if count > 50 {
         //Yellow
-        return (UIColor.yellowColor(),"")
+        return (UIColor.yellow,"")
     } else if count > 20 {
         //Orange
-        return (UIColor.orangeColor(),"")
+        return (UIColor.orange,"")
     } else {
         //red
-        return (UIColor.redColor(),"")
+        return (UIColor.red,"")
     }
 }

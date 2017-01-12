@@ -22,24 +22,24 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         // fake last log date on app load- - will be laoded from data
-        var c = NSDateComponents()
+        var c = DateComponents()
         c.year = 2015
         c.month = 8
         c.day = 31
-        var date = NSCalendar(identifier: NSCalendarIdentifierGregorian)?.dateFromComponents(c)
+        var date = Calendar(identifier: Calendar.Identifier.gregorian).date(from: c)
         
         //let today = NSCalendar(identifier: NSCalendarIdentifierGregorian)?.isDateInToday(_ date: Date)
         
         //let timeString = "\(dateFormatter.stringFromDate(NSDate()))"
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy" // Set the way the date should be displayed
-        dateField.text = "Last log day: " + formatter.stringFromDate(date!)
+        dateField.text = "Last log day: " + formatter.string(from: date!)
         
-        let isToday = NSCalendar.currentCalendar().isDateInToday(date!)
+        let isToday = Calendar.current.isDateInToday(date!)
         
         if isToday {
             logMessage.text = "You have already logged for today: well done!"
-            logButton.hidden = true
+            logButton.isHidden = true
             //set text to log hasbeen done
         } else {
             logMessage.text = "Log for today..."
@@ -47,23 +47,23 @@ class ViewController: UIViewController {
         lifeScoreLabel.setScore(lifeScore!)
     }
     
-    @IBAction func logMade(sender: AnyObject) {
+    @IBAction func logMade(_ sender: AnyObject) {
         
         print("running log made")
         //DELETE BELOW - MERELY TEST SCRIPT
-        let date = NSDate()
+        let date = Date()
         
         
         //everythignbelow is done in View Did Load so would notneed to be done in the main app
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy" // Set the way the date should be displayed
-        dateField.text = "Last log day: " + formatter.stringFromDate(date)
+        dateField.text = "Last log day: " + formatter.string(from: date)
         
-        let isToday = NSCalendar.currentCalendar().isDateInToday(date)
+        let isToday = Calendar.current.isDateInToday(date)
         
         if isToday {
             logMessage.text = "You have already logged for today: well done!"
-            logButton.hidden = true
+            logButton.isHidden = true
             
             //set text to log hasbeen done
         } else {
